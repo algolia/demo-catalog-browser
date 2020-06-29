@@ -63,7 +63,7 @@ const referenceHit = {
 
 const searchParams = new URLSearchParams(window.location.search);
 
-const userToken = searchParams.get('userToken');
+const userToken = searchParams.get('userToken') || 'alphonse';
 
 const myCarousels = userToken
   ? [
