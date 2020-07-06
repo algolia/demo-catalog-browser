@@ -11,42 +11,6 @@ const search = instantsearch({
   searchClient,
 });
 
-// const movies = searchClient.initIndex('perso_movies_carousel');
-
-// movies
-//   .search('', {
-//     filters: 'genre:action AND genre:crime',
-//     hitsPerPage: 100,
-//   })
-//   .then(({ hits }) => {
-//     aa('clickedObjectIDs', {
-//       index: 'perso_movies_carousel',
-//       eventName: 'CLICKED_MOVIE',
-//       userToken: 'action_crime_fan',
-//       objectIDs: hits
-//         .filter(() => Math.floor(Math.random() * 10) < 7)
-//         .slice(43, 61)
-//         .map(hit => hit.objectID),
-//     });
-
-//     aa('viewedObjectIDs', {
-//       index: 'perso_movies_carousel',
-//       eventName: 'VIEWED_MOVIE',
-//       userToken: 'action_crime_fan',
-//       objectIDs: hits.slice(65, 87).map(hit => hit.objectID),
-//     });
-
-//     aa('convertedObjectIDs', {
-//       index: 'perso_movies_carousel',
-//       eventName: 'WATCHED_MOVIE',
-//       userToken: 'action_crime_fan',
-//       objectIDs: hits
-//         .filter(() => Math.floor(Math.random() * 10) < 3)
-//         .slice(1, 19)
-//         .map(hit => hit.objectID),
-//     });
-//   });
-
 const referenceHit = {
   title: 'The Imitation Game',
   image: 'https://image.tmdb.org/t/p/w154/ntZGfHt4d73A9fDD4KUN4nbDQlq.jpg',
@@ -63,7 +27,7 @@ const referenceHit = {
 
 const searchParams = new URLSearchParams(window.location.search);
 
-const userToken = searchParams.get('userToken') || 'alphonse';
+const userToken = searchParams.get('userToken') || 'action_crime_fan';
 
 const myCarousels = userToken
   ? [
@@ -188,33 +152,3 @@ const addWidgets = () => {
 addWidgets();
 
 search.start();
-
-// document.querySelector('#user_select').addEventListener('change', e => {
-//   window.location.href = `${window.location.href}?userToken=${e.currentTarget.value}`;
-// });
-
-// document.addEventListener('click', e => {
-//   if (e.target.matches('.analytics')) {
-//     console.log('click', e.target.dataset.objectId);
-
-//     aa('clickedObjectIDs', {
-//       index: 'perso_movies_carousel',
-//       eventName: 'CLICKED_MOVIE',
-//       objectIDs: [e.target.dataset.objectId],
-//     });
-
-//     aa('viewedObjectIDs', {
-//       index: 'perso_movies_carousel',
-//       eventName: 'VIEWED_MOVIE',
-//       objectIDs: [e.target.dataset.objectId],
-//     });
-
-//     if (Math.floor(Math.random() * 10) < 4) {
-//       aa('convertedObjectIDs', {
-//         index: 'perso_movies_carousel',
-//         eventName: 'WATCHED_MOVIE',
-//         objectIDs: [e.target.dataset.objectId],
-//       });
-//     }
-//   }
-// });
